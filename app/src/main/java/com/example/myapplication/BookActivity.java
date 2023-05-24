@@ -6,10 +6,12 @@ import androidx.fragment.app.Fragment;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 public class BookActivity extends AppCompatActivity {
 
@@ -18,18 +20,11 @@ public class BookActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book);
 
-        try (DatabaseHelper dbHelper = new DatabaseHelper(this)) {
-            SQLiteDatabase db = dbHelper.getWritableDatabase();
-        }
 
         int btnId = getIntent().getIntExtra("btnId",-1);
 
         if (btnId == R.id.btn1) {
             loadFragment(new Fragment1());
-        } else if (btnId == R.id.btn2) {
-            loadFragment(new Fragment2());
-        } else if (btnId == R.id.btn3) {
-            loadFragment(new Fragment3());
         }
 
     }

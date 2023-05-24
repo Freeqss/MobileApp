@@ -1,6 +1,6 @@
 package com.example.myapplication;
 
-import android.database.sqlite.SQLiteDatabase;
+
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
@@ -12,12 +12,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.GenericArrayType;
@@ -31,6 +36,7 @@ public class Fragment1 extends Fragment {
 
     public ArrayList<Integer> pages = new ArrayList<>(List.of(1,10));
     public boolean addToFavorite = false;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,11 +57,6 @@ public class Fragment1 extends Fragment {
         ImageView pageImageView = view.findViewById(R.id.pageImageView);
         Bitmap pageBitmap = loadPageFromAssets("book1/page" + pages.get(0) + ".png");
         pageImageView.setImageBitmap(pageBitmap);
-
-
-
-
-
 
 
 
@@ -118,5 +119,4 @@ public class Fragment1 extends Fragment {
         }
         return null;
     }
-
 }
