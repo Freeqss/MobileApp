@@ -1,17 +1,14 @@
 <resources>
     <string name="app_name">My Application</string>
-    <string name="IdiNaxuy">Иди нахуй!!!</string>
-    <string name="SamIdi">Сам иди нахуй!!!</string>
-    <string name="read_n_chill">Read\'n chill</string>
     <string name="todo">TODO</string>
-    <string name="touch">Нажми на меня!</string>
-    <string name="favorite">Рекомедации</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="Tik">Тыкни</string>
-    <string name="next_page">Next Page</string>
-    <string name="prev_page">Prev Page</string>
     <string name="selfEducatiob">Саморазвитие</string>
     <string name="loveAndRelationship">Любовь и отношения</string>
     <string name="Упражнения">Упражнения</string>
+    <string name="stressControl">Управление стрессом</string>
+    <string name="text_not_found">Text not found</string>
+    <string name="full_lotos">Полный лотос</string>
+    <string name="semi_lotos">Полу–лотос</string>
+    <string name="quarter_lotos">Четверть лотоса</string>
+    <string name="burman_pose">Бирманская поза</string>
 </resources>

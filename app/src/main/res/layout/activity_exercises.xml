@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ExercisesActivity">
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/full_lotos"
+                    android:layout_width="175dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/full_lotos"
+                    android:contentDescription="@string/todo" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/full_lotos"
+                        android:textSize="27sp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="2pt"
+                        android:text="Самая устойчивая и, пожалуй, самая известная поза. Одна из самых сложных поз сидя, требует отличной растяжки и подготовки. Может травмировать неподготовленного человека. Ступня левой ноги лежит поверх бедра правой ноги, а ступня правой ноги – поверх бедра левой ноги."
+                        android:textSize="14sp"
+                        tools:ignore="RtlSymmetry" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/semi_lotos"
+                    android:layout_width="175dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/semi_lotos"
+                    android:contentDescription="@string/todo" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/semi_lotos"
+                        android:textSize="27sp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="2pt"
+                        android:text="Ступня одной ноги помещена на бедро другой ноги, а ступня другой ноги лежит на полу, под бедром противоположной ноги. Колени касаются пола."
+                        android:textSize="14sp"
+                        tools:ignore="RtlSymmetry" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/quater_lotos"
+                    android:layout_width="175dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/quater_lotos"
+                    android:contentDescription="@string/todo" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/quarter_lotos"
+                        android:textSize="27sp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="2pt"
+                        android:text="Ступня одной ноги помещена на лодыжке другой ноги, а ступня другой ноги лежит на полу, под бедром противоположной ноги."
+                        android:textSize="14sp"
+                        tools:ignore="RtlSymmetry" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/burman_pose"
+                    android:layout_width="175dp"
+                    android:layout_height="200dp"
+                    android:src="@drawable/burman_pose"
+                    android:contentDescription="@string/todo" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/burman_pose"
+                        android:textSize="27sp"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="2pt"
+                        android:text="Икры и ступни ваших ног лежат на полу, причем одна из голеней находится перед другой. Эту позу проще всего освоить начинающим. Она широко распространена в Юго-Восточной Азии. Мы предпочитаем использовать именно бирманскую позу."
+                        android:textSize="14sp"
+                        tools:ignore="RtlSymmetry" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

@@ -1,11 +1,11 @@
 package com.example.myapplication;
 
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-
 
 
 import androidx.annotation.NonNull;
@@ -13,12 +13,14 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -28,15 +30,18 @@ import java.io.InputStream;
 import java.lang.reflect.GenericArrayType;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 
 public class Fragment1 extends Fragment {
 
-    public ArrayList<Integer> pages = new ArrayList<>(List.of(1,10));
-    public boolean addToFavorite = false;
-
+    private final Map<String, String> arr = new HashMap<>();
+    private final Map<String, String> desc = new HashMap<>();
+    private final Map<String, String> pagess = new HashMap<>();
+    private final Map<String, String> yearss = new HashMap<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,70 +49,109 @@ public class Fragment1 extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_1, container, false);
 
+        pagess.put("who_cry_if_you_die", "Объем: 130 стр");
+        pagess.put("why_zebra", "Объем: 700 стр");
+        pagess.put("way_to_simple", "Объем: 250  стр");
+        pagess.put("power_of_spirit", "Объем: 320  стр");
+        pagess.put("magic_of_sun", "Объем: 200 стр");
+        pagess.put("together", "Объем: 270 стр");
+        pagess.put("lover", "Объем: 390  стр");
+        pagess.put("be_together", "Объем: 159  стр");
+        pagess.put("stress", "Объем: 230 стр");
+
+        yearss.put("who_cry_if_you_die","Дата написания: 2020");
+        yearss.put("why_zebra","Дата написания: 2020");
+        yearss.put("way_to_simple","Дата написания: 2021");
+        yearss.put("power_of_spirit","Дата написания: 2016");
+        yearss.put("magic_of_sun","Дата написания: 2021");
+        yearss.put("together","Дата написания: 2020");
+        yearss.put("lover","Дата написания: 2018");
+        yearss.put("be_together","Дата написания: 2017");
+        yearss.put("stress","Дата написания: 2019");
 
 
-        ImageButton prevBtn = view.findViewById(R.id.prevBtn);
-        prevBtn.setVisibility(View.INVISIBLE);
-
-        ImageButton nextBtn = view.findViewById(R.id.nextBtn);
-
-        ImageView addToFavoriteBtn = view.findViewById(R.id.addToFavoriteBtn);
-        addToFavoriteBtn.setImageResource(!addToFavorite ? R.drawable.heart_disable : R.drawable.heart_active);
-
-        ImageView pageImageView = view.findViewById(R.id.pageImageView);
-        Bitmap pageBitmap = loadPageFromAssets("book1/page" + pages.get(0) + ".png");
-        pageImageView.setImageBitmap(pageBitmap);
-
-
-
-
-
-        nextBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int currentPage = pages.get(0);
-                pages.set(0, currentPage + 1);
-                prevBtn.setVisibility(pages.get(0).equals(1) ? View.INVISIBLE : View.VISIBLE);
-                nextBtn.setVisibility(pages.get(0).equals(pages.get(1)) ? View.INVISIBLE : View.VISIBLE);
-                Bitmap pageBitmap = loadPageFromAssets("book1/page" + pages.get(0) + ".png");
-                pageImageView.setImageBitmap(pageBitmap);
-            }
-        });
-
-        addToFavoriteBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (addToFavorite) {
-                    addToFavorite = false;
-                    addToFavoriteBtn.setImageResource(R.drawable.heart_disable );
-                } else {
-                    addToFavorite = true;
-                    addToFavoriteBtn.setImageResource(R.drawable.heart_active);
-
-                }
-            }
-        });
-
-        prevBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int currentPage = pages.get(0);
-                pages.set(0, currentPage - 1);
-                prevBtn.setVisibility(pages.get(0).equals(1) ? View.INVISIBLE : View.VISIBLE);
-                nextBtn.setVisibility(pages.get(0).equals(pages.get(1)) ? View.INVISIBLE : View.VISIBLE);
-                Bitmap pageBitmap = loadPageFromAssets("book1/page" + pages.get(0) + ".png");
-                pageImageView.setImageBitmap(pageBitmap);
-            }
-        });
+        desc.put("who_cry_if_you_die","Кто заплачет, когда ты умрёшь?");
+        desc.put("why_zebra","Почему у зебр не бывает инфаркта. психология стресса");
+        desc.put("way_to_simple","Эссенциализм. Путь к простоте");
+        desc.put("power_of_spirit","Сила воли. Как развить и укрепить");
+        desc.put("magic_of_sun","Магия утра. Как первый час дня определяет ваш успех");
+        desc.put("together","Подходим друг к другу");
+        desc.put("lover","Чувство любви\n" +
+                "Новый научный подход к романтическим отношениям");
+        desc.put("be_together","Быть вместе");
+        desc.put("stress","Управление стрессом: как найти дополнительные 10 часов в неделю");
 
 
 
-       
+
+        arr.put("be_together", "Комикс с юмором показывает, как выглядит любовь изо дня в день. Здесь есть сладкие моменты и обыденность, радость и грусть, надежды и разочарования, умение договариваться и необходимость искать компромиссы.\n" +
+                "" +
+                "Дебби Танг делится с нами теплыми и трогательными моментами из семейной жизни. В забавных стрипах вы не раз узнаете себя и улыбнетесь глядя на героев. Они вместе занимаются спортом, готовят ужин, отмечают годовщины отношений (а порой забывают о них), едят на ночь вкусняшки, спорят по пустякам и поддерживают друг друга после тяжелого рабочего дня.\n" +
+                "" +
+                "Но самое главное - они учатся быть вместе, ценить того, кто рядом, и дорожить каждым моментом.\n" +
+                "Подробнее: https://www.labirint.ru/books/788294/");
+        arr.put("lover", "Нам не выжить без любви. Она делает жизнь ярче, интереснее, безопаснее. Но, нуждаясь в эмоциональной связи и поддержке, мы совершенно не представляем, как построить любовь и сохранить ее.\n" +
+                "" +
+                "Новая книга Сью Джонсон, основателя эмоционально-фокусированной терапии и автора бестселлера «Обними меня крепче», посвящена причинам разлада в отношениях и восстановлению эмоциональной близости. Джонсон объясняет, как формируется чувство любви, что секс — не главное, и почему, когда нас отвергают, мозг считает, что мы в опасности.\n" +
+                "" +
+                "Автор уверена, что даже самые несчастные пары могут вернуть в свою жизнь близость, если научатся немного иначе смотреть на эмоции. Вы сможете восстановить и построить отношения, которые будут приносить удовлетворение и не исчерпают себя.\n" +
+                "" +
+                "Основано на научных исследованиях и личных историях клиентов Сью Джонсон.");
+        arr.put("power_of_spirit", "От силы воли зависят физическое здоровье, финансовое положение, отношения с окружающими и профессиональный успех – это известный факт. Но почему же нам так часто не хватает этой самой силы воли: в один миг мы владеем собой, а в другой – нас захлестывают чувства и мы теряем контроль?\n" +
+                "\n" +
+                "Стэнфордский профессор Келли Макгонигал, обобщив результаты новейших исследований, объясняет, как заменить вредные привычки полезными, как перестать откладывать дела на последний момент, научиться сосредоточиваться и справляться со стрессом. По методике Макгонигал воспитать в себе силу воли оказывается удивительно легко – и неважно, для чего она вам нужна: похудеть, бросить курить, заняться спортом, перестать проверять почту каждые пять минут или найти новую работу. Вы даже не представляете, насколько недооцениваете свои возможности!");
+        arr.put("way_to_simple", "Эта книга для всех, кто погряз в повседневных заботах и кому не хватает времени на самое важное. Автор книги, писатель и психолог Грег Маккеон, напоминает: ваши время и энергия бесценны, их нельзя тратить на те вещи и тех людей, которые на самом деле не важны для вас. Вы и только вы должны определять, что стоит ваших ограниченных ресурсов. Эссенциализм – это новый подход, который позволит вам делать меньше, но лучше – во всех сферах вашей жизни. Он очень четко разъясняет, как сфокусироваться на самом важном и избавиться от всего того ненужного, что вас окружает и мешает сосредоточиться на приоритетах.");
+        arr.put("who_cry_if_you_die", "Суета, жажда наживы, пустые разговоры и бесполезная трата времени – вот на что большинство из нас тратит свою жизнь. Но все это не приносит счастья. Поэтому многие полагают, что счастье – это миф. Но счастье – совсем рядом! И его может получить каждый из нас.\n" +
+                "" +
+                "Просто начните читать эту книгу, выполнять несложные упражнения и следовать простым советам, которые она предлагает. И вы «очнетесь»!\n" +
+                "" +
+                "Вы обретете истинный смысл, ощутите настоящую радость, в вашу жизнь войдет счастье и пребудет с вами до вашего последнего вздоха. Перед вами великая книга, которая изменит вашу судьбу!");
+        arr.put("why_zebra", "Оказывается, эволюционно люди предрасположены реагировать и избегать угрозы, как это делают зебры. Мы должны расслабляться большую часть дня и бегать как сумасшедшие только при приближении опасности.\n" +
+                "" +
+                "У зебры время от времени возникает острая стрессовая реакция (физические угрозы). У нас, напротив, хроническая стрессовая реакция (психологические угрозы) редко доходит до таких величин, как у зебры, зато никуда не исчезает.\n" +
+                "" +
+                "Зебры погибают быстро, попадая в лапы хищников. Люди умирают медленнее: от ишемической болезни сердца, рака и других болезней, возникающих из-за хронических стрессовых реакций. Но когда стресс предсказуем, а вы можете контролировать свою реакцию на него, на развитие болезней он влияет уже не так сильно.\n" +
+                "" +
+                "Одна из самых авторитетных и знаменитых во всем мире книг по психологии и физиологии стресса.");
+        arr.put("magic_of_sun", "Книга, которая помогла тысячам людей изменить жизнь за счет правильного начала дня и утренних ритуалов.\n" +
+                "" +
+                "Что, если завтра любая (или даже каждая) сфера вашей жизни могла бы чудесным образом измениться? Что было бы иначе? Вы стали бы счастливее? Здоровее? Успешнее? Вы были бы в лучшей физической форме? Стали бы богаче? Энергичнее?\n" +
+                "" +
+                "Что, если существует простой, но не очевидный секрет, который гарантированно поможет вам изменить любую сторону вашей жизни — и сделать это быстрее, чем вы можете себе представить?\n" +
+                "" +
+                "Утренние ритуалы, которые предлагает осуществлять автор этой книги, помогли десяткам тысяч людей изменить свою жизнь, почувствовать себя лучше и успевать больше. Из книги вы узнаете, как первый час дня определяет ваш успех и позволяет вам раскрыть свой потенциал полностью.");
+        arr.put("together", "Наука говорит нам, чем питаться, когда заниматься спортом и как долго спать. Почему бы не воспользоваться научными данными и не попытаться улучшить отношения?\n" +
+                "" +
+                "В этой книге доктор Амир Левин и психолог Рейчел Хеллер объясняют, почему одним людям романтические отношения даются легко, а другие безнадежно застревают в страданиях. Через призму теории привязанности авторы по-новому смотрят на любовь и дают новое определение отношениям.\n" +
+                "" +
+                "Теория привязанности хорошо изучена и популярна, но обычно о ней говорят в контексте воспитания детей. Амир Левин и Рейчел Хеллер применили эту теорию к романтическим отношениям между взрослыми — и получили потрясающие результаты. Они объяснили, как ведут себя в отношениях люди с разными типами привязанности, почему они не могут иначе и как использовать эти знания.\n" +
+                "" +
+                "Существует четыре типа привязанности: надежный, избегающий, тревожный и редкий тревожно-избегающий тип. У каждого из них свои особенности и манера поведения в любовных отношениях. Что естественно для надежного типа, то практически невозможно для избегающего, и фраза «дело не в тебе, дело во мне» приобретает новый смысл.\n" +
+                "" +
+                "Кроме того, Левин и Хеллер подвергают сомнению современные теории о самодостаточности. Согласно их исследованиям, люди могут и должны зависеть друг от друга, а надежные отношения делают нас сильными и независимыми во внешнем мире.");
+        arr.put("stress", "В книге рассматриваются два главных врага делового человека – стресс и дефицит времени. Автор предлагает апробированную методику, использование которой повышает самоорганизацию, способствует появлению свободного времени, снимает прессинг, вызванный его дефицитом, и тем самым помогает избежать стрессовых ситуаций. Книга насыщена множеством примеров из практики и сопровождается богатым иллюстративным материалом.");
+
+
+        TextView bookTitle = view.findViewById(R.id.bookTitle);
+        TextView pagesx = view.findViewById(R.id.pages);
+        TextView yearsx = view.findViewById(R.id.years);
+        TextView textView = view.findViewById(R.id.asd);
+        ImageView imgview = view.findViewById(R.id.imgv);
+        if (getArguments() != null) {
+            String receivedText = getArguments().getString("text");
+            textView.setText(arr.get(receivedText));
+            bookTitle.setText(desc.get(receivedText));
+            pagesx.setText(pagess.get(receivedText));
+            yearsx.setText(yearss.get(receivedText));
+            Bitmap pageBitmap = loadPageFromAssets("book1/" + receivedText + ".png");
+            imgview.setImageBitmap(pageBitmap);
+        } else {
+            textView.setText(R.string.text_not_found);
+        }
 
 
         return view;
     }
-
 
 
     private Bitmap loadPageFromAssets(String s) {

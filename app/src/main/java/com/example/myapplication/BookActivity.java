@@ -21,10 +21,21 @@ public class BookActivity extends AppCompatActivity {
         setContentView(R.layout.activity_book);
 
 
+        Fragment1 fragment = new Fragment1();
+        Fragment2 exercises = new Fragment2();
+
+
         int btnId = getIntent().getIntExtra("btnId",-1);
 
-        if (btnId == R.id.btn1) {
-            loadFragment(new Fragment1());
+        if (btnId == R.id.btnExercises) {
+            loadFragment(exercises);
+        } else {
+            Intent intent = getIntent();
+            String btnTitle = intent.getStringExtra("btnTitle");
+            Bundle bundle = new Bundle();
+            bundle.putString("text", btnTitle);
+            fragment.setArguments(bundle);
+            loadFragment(fragment);
         }
 
     }
